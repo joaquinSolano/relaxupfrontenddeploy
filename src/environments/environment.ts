@@ -1,4 +1,4 @@
 export const environment={
     production:false,
-    base:'http://localhost:8081'
+    base:'https://relax-up-back-131m.onrender.com'
 }
