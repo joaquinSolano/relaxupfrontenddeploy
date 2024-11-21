@@ -8,7 +8,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class LoginService {
   constructor(private http: HttpClient) {}
   login(request: JwtRequest) {
-    return this.http.post('https://relaxupfrontenddeploy.vercel.app/login', request);
+    return this.http.post('https://relax-up-back-131m.onrender.com/login', request);
   }
   verificar() {
     let token = sessionStorage.getItem('token');
