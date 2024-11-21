@@ -13,7 +13,7 @@ const base_url = environment.base;
 })
   
 export class UsuarioService {
-  private url=`${base_url}/usuarios`;
+  private url=`https://relax-up-back-131m.onrender.com/usuarios`;
   private listacambio=new Subject<Usuario[]>();
 
   constructor(private http:HttpClient) {}
