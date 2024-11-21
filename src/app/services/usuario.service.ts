@@ -17,13 +17,18 @@ export class UsuarioService {
   private listacambio=new Subject<Usuario[]>();
 
   constructor(private http:HttpClient) {}
-  list() {
-    const token = sessionStorage.getItem('token'); // Obtén el token
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}` // Incluye el token en el encabezado
-    });
-    return this.http.get(this.url, { headers }); // Envía el encabezado
-  }
+list() {
+  const token = sessionStorage.getItem('token');
+  const headers = new HttpHeaders({
+    'Authorization': `Bearer ${token}`
+  });
+  return this.http.get(this.url, { headers }).pipe(
+    catchError(error => {
+      console.error('Error al obtener usuarios:', error);
+      return throwError(error);
+    })
+  );
+}
   insert(us:Usuario){
     return this.http.post(this.url,us)
   }
