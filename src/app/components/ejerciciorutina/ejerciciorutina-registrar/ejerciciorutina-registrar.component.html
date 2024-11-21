@@ -1,0 +1,58 @@
+<div class="title-container">
+  <div class="container" style="text-align: center; margin: 2%">
+    <h1>Registro de Ejercicios de Rutinas</h1>
+  </div>
+  <div class="container" style="text-align: center">
+    <form [formGroup]="form" (submit)="insertar()">
+    
+      <!-- Campo Título -->
+      <mat-form-field class="example-full-width">
+        <mat-label>Título</mat-label>
+        <input matInput placeholder="Título" formControlName="tituloEjercicioRutinaa" />
+        <mat-error *ngIf="form.get('tituloEjercicioRutinaa')?.hasError('required')">
+          El título es obligatorio.
+        </mat-error>
+        <mat-error *ngIf="form.get('tituloEjercicioRutinaa')?.hasError('minlength')">
+          Debe tener al menos 3 letras.
+        </mat-error>
+        <mat-error *ngIf="form.get('tituloEjercicioRutinaa')?.hasError('duplicateTitle')">
+          Este título ya está registrado.
+        </mat-error>
+      </mat-form-field>
+      <br />
+
+      <!-- Campo Descripción con cuadro más grande -->
+      <mat-form-field class="example-full-width">
+        <mat-label>Descripción</mat-label>
+        <textarea
+          matInput
+          formControlName="descripcionEjercicioRutinaa"
+          rows="5"
+          cols="50"
+          placeholder="Escribe una descripción detallada aquí"
+        ></textarea>
+        <mat-error *ngIf="form.get('descripcionEjercicioRutinaa')?.hasError('required')">
+          La descripción es obligatoria.
+        </mat-error>
+        <mat-error *ngIf="form.get('descripcionEjercicioRutinaa')?.hasError('minlength')">
+          Debe tener al menos 3 letras.
+        </mat-error>
+      </mat-form-field>
+      <br />
+
+        <mat-form-field>
+          <mat-label>Rutina</mat-label>
+          <mat-select formControlName="RutinaEjercicioRutinaa">
+            @for (ci of listaRutina; track ci) {
+            <mat-option [value]="ci.idRutina">{{ ci.nombreRutina }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <div style="text-align: center; margin-top: 20px">
+           <button mat-flat-button color="warn" type="submit" [disabled]="form.invalid">
+          Registrar
+        </button>
+        </div>
+      </form>
+    </div>
+  </div>

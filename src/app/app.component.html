@@ -1,0 +1,144 @@
+<mat-toolbar class="custom-toolbar" fxLayout="row" fxLayoutAlign="space-between center" *ngIf="verificar()">
+      <div  fxLayout="row" fxLayoutGap="10px">
+        <button class="special-buttons" mat-button [routerLink]="['/homes']" style="color: white">
+          <mat-icon>home</mat-icon>Home
+        </button>
+    <button class="special-buttons" mat-button [matMenuTriggerFor]="menuUsuario" style="color: white"  *ngIf="isAdmin() || isTester()">
+      <mat-icon>group</mat-icon>
+      Usuario
+    </button>
+    <button class="special-buttons" mat-button [matMenuTriggerFor]="menuRol" style="color: white" *ngIf="isAdmin()">
+      <mat-icon>security</mat-icon>
+      Rol
+    </button>
+    <button class="special-buttons" mat-button [matMenuTriggerFor]="menueventos" style="color: white" *ngIf="isAdmin() || isTester()">
+      <mat-icon>event</mat-icon>
+      Eventos
+    </button>
+    <button class="special-buttons" mat-button [matMenuTriggerFor]="menuforos" style="color: white" *ngIf="isAdmin() || isTester()">
+      <mat-icon>speaker_notes</mat-icon>
+      Foros
+    </button>
+    <button class="special-buttons" mat-button [matMenuTriggerFor]="menumensajesforos" style="color: white" *ngIf="isAdmin()  || isTester()">
+      <mat-icon>subject</mat-icon>
+      Mensajes de Foros
+    </button>
+    <button class="special-buttons" mat-button [matMenuTriggerFor]="menurutina" style="color: white" *ngIf="isAdmin() || isTester()">
+      <mat-icon>accessibility_new</mat-icon>
+      Rutinas
+    </button>
+    <button class="special-buttons" mat-button [matMenuTriggerFor]="menuurutina" style="color: white"  *ngIf="isAdmin()  || isTester()">
+      <mat-icon>group</mat-icon>
+      Usuario Rutina
+    </button>
+    <button class="special-buttons" mat-button [matMenuTriggerFor]="menuejerciciorutina" style="color: white"*ngIf="isAdmin()  || isTester()"> 
+      <mat-icon>folder_shared</mat-icon>
+      Ejercicios de Rutinas
+    </button>
+    <button class="special-buttons" mat-button [matMenuTriggerFor]="menuemergencia" style="color: white" *ngIf="isAdmin()">
+      <mat-icon>folder_shared</mat-icon>
+      Emergencia
+    </button>
+    <button class="special-buttons" mat-button [matMenuTriggerFor]="menutecnicarelajacion" style="color: white" *ngIf="isAdmin()  || isTester()">
+      <mat-icon>folder_shared</mat-icon>
+      Tecnicas de relajacion
+    </button>
+  </div>
+</mat-toolbar>
+<mat-toolbar *ngIf="verificar()">    
+  <button class="special-buttons" mat-button [matMenuTriggerFor]="menuPlanes" style="color: white" *ngIf="isAdmin()">
+  <mat-icon>event</mat-icon>
+  Planes de Membresía
+</button>
+<button class="special-buttons" mat-button [matMenuTriggerFor]="menuMetodo" style="color: white" *ngIf="isAdmin()">
+  <mat-icon>account_balance_wallet</mat-icon>
+  Metodos de Pago
+</button>
+<button class="special-buttons" mat-button [matMenuTriggerFor]="menuSus" style="color: white" *ngIf="isAdmin()">
+  <mat-icon>euro_symbol</mat-icon>
+  Suscripciones
+</button>
+<button class="special-buttons" mat-button style="color: white" routerLink="/gatos" *ngIf="isAdmin() || isTester()">
+  <mat-icon>pets</mat-icon>
+  Gatos
+</button>
+<button mat-button [matMenuTriggerFor]="menuReportes" style="color: white" *ngIf="isAdmin()">
+  <mat-icon>book</mat-icon>Reportes
+    </button>
+<button mat-button [matMenuTriggerFor]="menuSalir" style="color: white">
+  <mat-icon>person</mat-icon>Usuario
+</button>
+</mat-toolbar>
+<mat-menu #menuUsuario="matMenu">
+  <button mat-menu-item routerLink="/usuarios"><mat-icon>assignment</mat-icon>Listar</button>
+  <button mat-menu-item routerLink="/usuarios/nuevo"><mat-icon>person_add</mat-icon>Registrar</button>
+</mat-menu>
+<mat-menu #menuRol="matMenu">
+  <button mat-menu-item routerLink="/rol"><mat-icon>assignment</mat-icon>Listar</button>
+  <button mat-menu-item routerLink="/rol/nuevo"><mat-icon>assignment_ind</mat-icon>Registrar</button>
+</mat-menu>
+<mat-menu #menueventos="matMenu">
+  <button mat-menu-item routerLink="/eventos"><mat-icon>assignment</mat-icon>Listar</button>
+  <button mat-menu-item routerLink="/eventos/nuevo"><mat-icon>event_available</mat-icon>Registrar</button>
+</mat-menu>
+<mat-menu #menuforos="matMenu">
+  <button mat-menu-item routerLink="/foross">Listar</button>
+  <button mat-menu-item routerLink="/foross/nuevo">Registrar</button>
+</mat-menu>
+<mat-menu #menumensajesforos="matMenu">
+  <button mat-menu-item routerLink="/mensajeforos">Listar</button>
+  <button mat-menu-item routerLink="/mensajeforos/nuevo">Registrar</button>
+</mat-menu>
+<mat-menu #menurutina="matMenu">
+  <button mat-menu-item routerLink="/rutina">Listar</button>
+  <button mat-menu-item routerLink="/rutina/nuevo">Registrar</button>
+</mat-menu>
+<mat-menu #menuurutina="matMenu">
+  <button mat-menu-item routerLink="/UsuarioRutina">Listar</button>
+  <button mat-menu-item routerLink="/UsuarioRutina/nuevo">Registrar</button>
+</mat-menu>
+<mat-menu #menuejerciciorutina="matMenu">
+  <button mat-menu-item routerLink="/ejerciciorutinas">Listar</button>
+  <button mat-menu-item routerLink="/ejerciciorutinas/nuevo">Registrar</button>
+</mat-menu>
+<mat-menu #menuemergencia="matMenu">
+  <button mat-menu-item routerLink="/emergencias">Listar</button>
+  <button mat-menu-item routerLink="/emergencias/nuevo">Registrar</button>
+</mat-menu>
+<mat-menu #menutecnicarelajacion="matMenu">
+  <button mat-menu-item routerLink="/tecnicasrelajacion">Listar</button>
+  <button mat-menu-item routerLink="/tecnicasrelajacion/nuevo">Registrar</button>
+</mat-menu>
+<mat-menu #menuPlanes="matMenu">
+  <button mat-menu-item routerLink="/planes"><mat-icon>assignment</mat-icon>Listar</button>
+  <button mat-menu-item routerLink="/planes/nuevo"><mat-icon>person_add</mat-icon>Registrar</button>
+</mat-menu>
+<mat-menu #menuMetodo="matMenu">
+  <button mat-menu-item routerLink="/metodos"><mat-icon>assignment</mat-icon>Listar</button>
+  <button mat-menu-item routerLink="/metodos/nuevo"><mat-icon>credit_card</mat-icon>Registrar</button>
+</mat-menu>
+<mat-menu #menuSus="matMenu">
+  <button mat-menu-item routerLink="/suscripciones"><mat-icon>assignment</mat-icon>Listar</button>
+  <button mat-menu-item routerLink="/suscripciones/nuevo"><mat-icon>person_add</mat-icon>Registrar</button>
+</mat-menu>
+<mat-menu #menuReportes="matMenu">
+  <button mat-menu-item routerLink="/reportes"><mat-icon> pie_chart</mat-icon>Tecnicas de relajacion por usuario</button>
+  <button mat-menu-item routerLink="/reportes/totalingresos"><mat-icon> pie_chart</mat-icon>total ingresos</button>
+  <button mat-menu-item routerLink="/reportes/emergencias"><mat-icon> bar_chart</mat-icon>Veces presionado emergencia por usuario</button>
+  <button mat-menu-item routerLink="/reportes/reporte-confirmaron"><mat-icon>event_note</mat-icon>eventos confirmados</button>
+  <button mat-menu-item routerLink="/reportes/reporte-progreso"><mat-icon>event_note</mat-icon>progreso por usuario</button>
+  <button mat-menu-item routerLink="/reportes/suscripciones"><mat-icon> bar_chart</mat-icon>Total de suscripciones</button>
+  <button mat-menu-item routerLink="/reportes/Forosporusuario"><mat-icon>bookmark_border</mat-icon>Foros por usuarios</button>
+  <button mat-menu-item routerLink="/reportes/Mensajeporforo"><mat-icon>assignment</mat-icon>Mensajes por foros</button>
+</mat-menu>
+<mat-menu #menuSalir="matMenu">
+  <button mat-menu-item routerLink="/login" (click)="cerrar()">
+    <mat-icon>logout</mat-icon>
+    <span>Cerrar sesión</span>
+  </button>
+  <button mat-menu-item>
+    Rol:
+    <span>{{ role }}</span>
+  </button>
+</mat-menu>
+<router-outlet></router-outlet>

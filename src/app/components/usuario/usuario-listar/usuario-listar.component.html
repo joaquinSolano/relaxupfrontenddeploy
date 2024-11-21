@@ -1,0 +1,64 @@
+<div class="container">
+  <div style="text-align: center; margin: 5%;">
+    <h1>Lista Usuario</h1>
+  </div>
+  <div>
+    <div>
+      <table mat-table [dataSource]="datasource" class="mat-elevation-z8">
+        
+        <ng-container matColumnDef="c1">
+          <th mat-header-cell *matHeaderCellDef> Id </th>
+          <td mat-cell *matCellDef="let element"> {{element.idUsuario}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="c2">
+          <th mat-header-cell *matHeaderCellDef> Nombre </th>
+          <td mat-cell *matCellDef="let element"> {{element.nombreUsuario}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="c3">
+          <th mat-header-cell *matHeaderCellDef> Correo</th>
+          <td mat-cell *matCellDef="let element"> {{element.correoUsuario}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="c4">
+          <th mat-header-cell *matHeaderCellDef> Telefono </th>
+          <td mat-cell *matCellDef="let element"> {{element.telefonoUsuario}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="c5">
+          <th mat-header-cell *matHeaderCellDef> Contraseña </th>
+          <td mat-cell *matCellDef="let element"> {{element.contrasenaUsuario}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="c6">
+          <th mat-header-cell *matHeaderCellDef> Progreso </th>
+          <td mat-cell *matCellDef="let element"> {{element.progresoUsuario}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="c7">
+          <th mat-header-cell *matHeaderCellDef> Rol </th>
+          <td mat-cell *matCellDef="let element"> {{element.rol?.nombreRol}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="accion01">
+          <th mat-header-cell *matHeaderCellDef> Eliminar </th>
+          <td mat-cell *matCellDef="let element" (click)="delete(element.idUsuario)">
+            <mat-icon  style="color:red">delete</mat-icon>
+          </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="accion02">
+          <th mat-header-cell *matHeaderCellDef> Actualizar </th>
+          <td mat-cell *matCellDef="let element" [routerLink]="['ediciones', element.idUsuario]">
+            <mat-icon style="color: red">edit</mat-icon>
+          </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+    </div>
+  </div>
+  

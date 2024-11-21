@@ -1,0 +1,39 @@
+<div class="container">
+    <div style="text-align: center; margin: 5%"><h1>Lista de metodos de pago</h1></div>
+    <div>
+      <table mat-table [dataSource]="datasource" class="mat-elevation-z8">
+        <ng-container matColumnDef="ctt1">
+          <th mat-header-cell *matHeaderCellDef>Código.</th>
+          <td mat-cell *matCellDef="let element">{{ element.idMetodoPago }}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="ctt2">
+          <th mat-header-cell *matHeaderCellDef>Tipo de pago</th>
+          <td mat-cell *matCellDef="let element">{{ element.tipoPago }}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="ctt3">
+          <th mat-header-cell *matHeaderCellDef>Nombre de usuario</th>
+          <td mat-cell *matCellDef="let element">{{ element.usuario.nombreUsuario }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="accion01">
+          <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+          <td mat-cell *matCellDef="let element" (click)="delete(element.idMetodoPago)">
+            <mat-icon style="color:#f4310a ;">delete</mat-icon>
+          </td> 
+        </ng-container>
+
+        <ng-container matColumnDef="accion02">
+          <th mat-header-cell *matHeaderCellDef>Actualizar</th>
+          <td mat-cell *matCellDef="let element" [routerLink]="['ediciones',element.idMetodoPago]" >
+            <mat-icon style="color:#f4310a ;">edit</mat-icon>
+          </td> 
+        </ng-container>
+         
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[4, 7, 10]" showFirstLastButtons></mat-paginator>
+    </div>
+  </div>

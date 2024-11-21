@@ -1,0 +1,67 @@
+<div class="title-container">
+    <div class="container" style="text-align: center; margin: 2%">
+      <h1>Registro de usuario por rutina</h1>
+    </div>
+    <div class="container" style="text-align: center">
+  
+      <form [formGroup]="form" (submit)="insertar()">
+        <mat-form-field class="example-full-width" *ngIf="edicion">
+          <mat-label>Id</mat-label>
+          <input matInput placeholder="Id" formControlName="IdUsuarioRutina" />
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <mat-label>Fecha</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="FechaRealizacion" min="2024-11-18" />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <br />
+  
+        <mat-form-field class="example-full-width">
+          <mat-label>Progreso</mat-label>
+          <input matInput placeholder="" formControlName="Progreso" />
+          <mat-error *ngIf="form.get('Progreso')?.hasError('required')">
+            Campo obligatorio
+        </mat-error>
+        <mat-error *ngIf="form.get('Progreso')?.hasError('min')">
+          Ingrese numero valido
+        </mat-error>
+        <mat-error *ngIf="form.get('Progreso')?.hasError('max')">
+          Ingrese numero valido
+        </mat-error>
+        <mat-error *ngIf="form.get('Progreso')?.hasError('pattern')">
+          Solo ingresar numeros
+        </mat-error>
+        </mat-form-field>
+        <br />
+  
+        <mat-form-field>
+          <mat-label>Usuario</mat-label>
+          <mat-select formControlName="idUsuario">
+            @for (ci of listaUsuario; track ci) {
+            <mat-option [value]="ci.idUsuario">{{ ci.nombreUsuario }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <br />
+
+        <mat-form-field>
+          <mat-label>Rutina</mat-label>
+          <mat-select formControlName="idRutina">
+            @for (ci of listarutina; track ci) {
+            <mat-option [value]="ci.idRutina">{{ ci.nombreRutina }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <div style="text-align: center">
+          <button mat-flat-button color="warn">Registrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

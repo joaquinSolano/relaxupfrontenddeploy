@@ -1,0 +1,62 @@
+<div class="title-container"> 
+    <div class="container" style="text-align: center;margin:5%"><h1>Registro de suscripciones</h1></div>
+    <div class="container" style="text-align: center">
+      <form [formGroup]="form" (submit)="insertar()" >
+  
+        <mat-form-field class="example-full-width" *ngIf="edicion">
+          <mat-label>Código</mat-label>
+          <input matInput  formControlName="scodigo" readonly="true"/>
+        </mat-form-field>
+        <br />
+
+        <mat-form-field>
+            <mat-label>Inicio</mat-label>
+            <input matInput [matDatepicker]="picker1" formControlName="sfechaInicio" />
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker1"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+          <br />
+
+
+          <mat-form-field>
+            <mat-label>Fin</mat-label>
+            <input matInput [matDatepicker]="picker2" formControlName="sfechaFin" />
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker2"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
+          <br />
+    
+        <mat-form-field>
+          <mat-label>Metodo de pago</mat-label>
+          <mat-select formControlName="smetodoPago">
+            @for (metodoPago of listaMPagos; track metodoPago) {
+            <mat-option [value]="metodoPago.idMetodoPago">{{ metodoPago.tipoPago }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+  
+        <div></div>
+    
+        <mat-form-field>
+          <mat-label>Plan</mat-label>
+          <mat-select formControlName="splanes">
+            @for (planes of listaPlanes; track planes) {
+            <mat-option [value]="planes.idPlan">{{ planes.nombrePlan }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      
+        <div style="text-align: center;">
+          <button mat-flat-button color="warn">Registrar</button>
+        </div>
+      </form>
+    </div>
+  </div>

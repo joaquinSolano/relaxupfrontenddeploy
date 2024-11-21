@@ -1,0 +1,69 @@
+.mat-toolbar {
+  background-color: rgba(255,152,0,255);
+  color: white;
+  height: 60px;
+  display: flex;
+  width: 100%;
+}
+
+.special-buttons { 
+  background-color: inherit;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 0; /* Remove default margins */
+}
+  .custom-menu-item {   
+    color: white; 
+    &:hover {
+      color: white; 
+    }
+  }
+  .left-menu {
+    display: flex; /* Permite alinear los botones horizontalmente */
+  }
+  
+  .right-menu {
+    margin-left: auto; /* Empuja el menú de usuarios a la derecha */
+  }
+  footer {
+    background-color: #333;
+    position: absolute; /* Or relative if you want margins relative to content */
+    bottom: 0; /* Place it at the bottom */
+    width: 100%; /* Ensure it spans the full width */
+    z-index: 10; /* Set a higher z-index if needed */
+  }
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.footer-links a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #ff9800;
+}
+
+.footer-social a {
+    margin: 0 10px;
+}
+
+.footer-social img {
+    width: 30px;
+    transition: transform 0.3s;
+}
+
+.footer-social img:hover {
+    transform: scale(1.1);
+}
+.copyrights {
+  text-align: center; /* Center the text horizontally */
+}

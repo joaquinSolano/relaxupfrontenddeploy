@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    justify-content: space-between; /* Distribuye los elementos de forma equitativa */
+}
+
+.text-container {
+    flex: 1; /* Ocupa la mitad del espacio disponible */
+    text-align: center;
+    align-self: center;
+}
+
+.image-container {
+    flex: 1; /* Ocupa la otra mitad del espacio disponible */
+    text-align: center; /* Centra la imagen horizontalmente */
+}
+
+img {
+    max-width: 70%;
+    height: auto;
+    align-self: center; 
+}

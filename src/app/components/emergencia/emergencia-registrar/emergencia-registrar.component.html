@@ -1,0 +1,45 @@
+<div class="title-container"> 
+    <div class="container" style="text-align: center;margin:5%"><h1>Registro de usuarios que presionaron el botón de emergencia</h1></div>
+    <div class="container" style="text-align: center">
+      <form [formGroup]="form" (submit)="insertar()" >
+  
+        <mat-form-field class="example-full-width" *ngIf="edicion">
+          <mat-label>Código</mat-label>
+          <input matInput  formControlName="ecodigo" readonly="true"/>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <mat-label>Fecha</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="efecha" />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <br />
+        <div></div>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Hora</mat-label>
+            <input matInput placeholder="HH:MM:SS" formControlName="ehora" />
+          </mat-form-field>
+          <br />
+    
+        <mat-form-field>
+          <mat-label>Usuario</mat-label>
+          <mat-select formControlName="eusuario">
+            @for (usuario of listaUsuarios; track usuario) {
+            <mat-option [value]="usuario.idUsuario">{{ usuario.nombreUsuario }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      
+        <div style="text-align: center;">
+          <button mat-flat-button color="warn">Registrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

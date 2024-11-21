@@ -1,0 +1,39 @@
+<div class="title-container">
+  <div class="container" style="text-align: center; margin: 2%">
+    <h1>Registro de Foros</h1>
+  </div>
+  <div class="container" style="text-align: center">
+    <form [formGroup]="form" (submit)="insertar()">
+
+      <!-- Campo Título con validaciones -->
+      <mat-form-field class="example-full-width">
+        <mat-label>Titulo</mat-label>
+        <input matInput placeholder="Titulo" formControlName="Titulo" />
+        <mat-error *ngIf="form.get('Titulo')?.hasError('required')">
+          El título es obligatorio.
+        </mat-error>
+        <mat-error *ngIf="form.get('Titulo')?.hasError('minlength')">
+          El título debe tener al menos 3 caracteres.
+        </mat-error>
+        <mat-error *ngIf="form.get('Titulo')?.hasError('duplicateTitle')">
+          Este título ya está registrado.
+        </mat-error>
+      </mat-form-field>
+      <br />
+
+        <mat-form-field>
+          <mat-label>Id del Usuario</mat-label>
+          <mat-select formControlName="IdUsuario">
+            @for (ci of listaUsuario; track ci) {
+            <mat-option [value]="ci.idUsuario">{{ ci.nombreUsuario }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <div style="text-align: center">
+          <button mat-flat-button color="warn" type="submit" [disabled]="form.invalid">
+            Registrar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>

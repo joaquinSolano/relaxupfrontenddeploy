@@ -1,0 +1,97 @@
+<div class="title-container">
+  <div class="container" style="text-align: center;margin:5%"><h1>Registro de usuarios</h1></div>
+  <div class="container" style="text-align: center">
+    <form [formGroup]="form" (submit)="insertar()" >
+
+      <mat-form-field class="example-full-width" *ngIf="edicion">
+        <mat-label>Id</mat-label>
+        <input matInput placeholder="Id" formControlName="uid" />
+      </mat-form-field>
+      <br />
+      <mat-form-field class="example-full-width">
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder="Nombre" formControlName="unombre" />
+        <mat-error *ngIf="form.get('unombre')?.hasError('required')">
+          Campoobligatorio
+      </mat-error>
+      <mat-error *ngIf="form.get('unombre')?.hasError('minlength')">
+        Ingresar nombre con al menos 3 caracteres
+      </mat-error>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field class="example-full-width">
+          <mat-label>Correo</mat-label>
+          <input matInput placeholder="Correo" formControlName="ucorreo" />
+          <mat-error *ngIf="form.get('ucorreo')?.hasError('required')">
+            Campo obligatorio
+        </mat-error>
+        <mat-error *ngIf="form.get('ucorreo')?.hasError('email')">
+          Ingrese correo valido
+        </mat-error>
+        </mat-form-field>
+        <br />
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Telefono</mat-label>
+          <input matInput placeholder="Telefono" formControlName="utelefono" />
+          <mat-error *ngIf="form.get('utelefono')?.hasError('required')">
+            Campo obligatorio
+        </mat-error>
+        <mat-error *ngIf="form.get('utelefono')?.hasError('min')">
+          Ingrese numero valido
+        </mat-error>
+        <mat-error *ngIf="form.get('utelefono')?.hasError('max')">
+          Ingrese numero valido
+        </mat-error>
+        <mat-error *ngIf="form.get('utelefono')?.hasError('pattern')">
+          Solo ingresar numeros
+        </mat-error>
+        </mat-form-field>
+        <br />
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Contraseña</mat-label>
+          <input type="password" id="myPassword" matInput placeholder="Contraseña" formControlName="ucontrasena" />
+          <mat-error *ngIf="form.get('ucontrasena')?.hasError('required')">
+            Campo obligatorio
+        </mat-error>
+        <mat-error *ngIf="form.get('ucontrasena')?.hasError('minlength')">
+          Ingresar contraseña con al menos 8 caracteres
+        </mat-error>
+        </mat-form-field>
+        <br />
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Progreso</mat-label>
+          <input matInput placeholder="Progreso" formControlName="uprogreso" />
+          <mat-error *ngIf="form.get('uprogreso')?.hasError('required')">
+            Campo obligatorio
+        </mat-error>
+        <mat-error *ngIf="form.get('uprogreso')?.hasError('min')">
+          Ingrese numero valido
+        </mat-error>
+        <mat-error *ngIf="form.get('uprogreso')?.hasError('max')">
+          Ingrese numero valido
+        </mat-error>
+        <mat-error *ngIf="form.get('uprogreso')?.hasError('pattern')">
+          Solo ingresar numeros
+        </mat-error>
+        </mat-form-field>
+        <br />
+
+        <mat-form-field>
+          <mat-label>Rol</mat-label>
+          <mat-select formControlName="urol">
+            @for (rol of listaRoles; track rol) {
+            <mat-option [value]="rol.idRol">{{ rol.nombreRol }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      
+      <div style="text-align: center;">
+        <button mat-flat-button  color="warn">Registrar</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,71 @@
+<div class="title-container">
+  <div class="container" style="text-align: center; margin: 2%">
+    <h1>Registro de Rutinas</h1>
+  </div>
+  <div class="container" style="text-align: center">
+    <form [formGroup]="form" (submit)="insertar()">
+      
+      <mat-form-field class="example-full-width" *ngIf="edicion">
+        <mat-label>Id</mat-label>
+        <input matInput placeholder="Id" formControlName="IdRutina" />
+      </mat-form-field>
+      <br />
+      <!-- Campo Nombre -->
+      <mat-form-field class="example-full-width">
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder="Nombre de la rutina" formControlName="nombreRutina" />
+        <mat-error *ngIf="form.get('nombreRutina')?.hasError('required')">
+          Nombre de la rutina es obligatorio.
+        </mat-error>
+        <mat-error *ngIf="form.get('nombreRutina')?.hasError('minlength')">
+          Debe tener 3 letras minimo
+        </mat-error>
+        <mat-error *ngIf="form.get('nombreRutina')?.hasError('duplicateName')">
+          Nombre ya está registrado.
+        </mat-error>
+      </mat-form-field>
+      <br />
+
+      <!-- Campo Descripción con caja más grande -->
+      <mat-form-field class="example-full-width">
+        <mat-label>Descripcion</mat-label>
+        <textarea
+          matInput
+          formControlName="descripcionRutina"
+          rows="5"
+          cols="50"
+          placeholder="Descripcion de la rutina"
+        ></textarea>
+        <mat-error *ngIf="form.get('descripcionRutina')?.hasError('required')">
+          La descripción es obligatoria.
+        </mat-error>
+        <mat-error *ngIf="form.get('descripcionRutina')?.hasError('minlength')">
+          La descripción debe tener al menos 3 caracteres.
+        </mat-error>
+      </mat-form-field>
+      <br />
+
+      <!-- Campo Duración -->
+      <mat-form-field class="example-full-width">
+        <mat-label>Duracion</mat-label>
+        <input matInput placeholder="Duracion de la rutina" formControlName="duracionRutina" />
+      </mat-form-field>
+      <br />
+
+        <mat-form-field>
+          <mat-label>Tecnica de Relajacion</mat-label>
+          <mat-select formControlName="TecnicaRelajacionRutina">
+            @for (ci of listaTecnicasRelajacion; track ci) {
+            <mat-option [value]="ci.idTecnicaRelajacion">{{ ci.nombreTecnica}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <div style="text-align: center">
+          <button mat-flat-button color="warn" type="submit" [disabled]="form.invalid">
+            Registrar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
